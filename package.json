@@ -7,7 +7,8 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-		"build:ui": "rm -rf dist && cd ../../part2/part2-notes-frontend/ && npm run build && cp -r dist/ ../../part3/render-test/"
+		"build:ui": "rm -rf dist && cd ../../part2/part2-notes-frontend/ && npm run build && cp -r dist/ ../../part3/render-test/",
+		"deploy:full": "npm run build:ui && git add -A && git commit -m uibuild && git push"
   },
   "author": "",
   "license": "MIT",
