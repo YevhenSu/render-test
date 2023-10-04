@@ -23,20 +23,12 @@ app.use( express.json() )
 app.use( requestLogger )
 //app.use( unknownEndpoint )
 
-app.get( "/", ( request, response ) => {
-	response.send( "<h1>Hello World!</h1>" )
-} )
-
 app.get(
 	"/api/notes/:id",
 	( request, response ) => {
-		const id = Number( request.params.id )
-		const note = notes.find( note => note.id === id )
-		if( note ) {
+		Note.findById( request.params.id ).then( note => {
 			response.json( note )
-		} else {
-			response.status( 404 ).end()
-		}
+		} )
 	}
 )
 
