@@ -1,5 +1,6 @@
 const express = require( "express" )
 const mongoose = require( "mongoose" )
+const Note = require( "./models/note" ) 
 const cors = require( "cors" )
 const password = process.argv[2]
 
