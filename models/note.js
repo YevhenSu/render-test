@@ -2,7 +2,7 @@ const mongoose = require( "mongoose" )
 
 mongoose.set('strictQuery',false)
 
-const url = process.env.NONGODB_URI
+const url = process.env.MONGODB_URI
 
 console.log( "connected to ", url )
 
