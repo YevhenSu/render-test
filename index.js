@@ -1,7 +1,6 @@
 const express = require( "express" )
 const Note = require( "./models/note" ) 
 const cors = require( "cors" )
-const password = process.argv[2]
 
 const app = express()
 
