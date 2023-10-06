@@ -30,8 +30,6 @@ app.use( cors() )
 app.use( express.static( "dist" ) )
 app.use( express.json() )
 app.use( requestLogger )
-//app.use( unknownEndpoint )
-app.use( errorHandler )
 
 app.get(
 	"/api/notes/:id",
@@ -85,6 +83,9 @@ app.get( "/api/notes", ( request, response ) => {
 		response.json( notes )
 	} )
 } )
+
+app.use( unknownEndpoint )
+app.use( errorHandler )
 
 const PORT = process.env.PORT
 app.listen( PORT, () => {
