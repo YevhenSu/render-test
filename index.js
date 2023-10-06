@@ -17,15 +17,25 @@ const unknownEndpoint = ( request, response ) => {
 	response.status( 404 ).send( { error: "unknown endpoint" } )
 }
 
+const errorHandler = ( error, request, response, next ) => {
+	console.error( error.message )
+
+	if( error.name === "CastError" ) {
+		return response.status( 400 ).send( { error: "malformatted id" } )
+	}
+	next( error ) 
+}
+
 app.use( cors() )
 app.use( express.static( "dist" ) )
 app.use( express.json() )
 app.use( requestLogger )
 //app.use( unknownEndpoint )
+app.use( errorHandler )
 
 app.get(
 	"/api/notes/:id",
-	( request, response ) => {
+	( request, response, next ) => {
 		Note.findById( request.params.id )
 			.then( note => {
 				if( note ) {
@@ -34,10 +44,7 @@ app.get(
 					response.status( 404 ).end()
 				}
 			} )
-			.catch( error => {
-				console.log( "error...", error )
-				response.status( 400 ).send( { error: "malformatted id"} )
-			} )
+			.catch( error => next(error) )
 	}
 )
 
