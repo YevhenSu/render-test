@@ -78,23 +78,20 @@ app.delete(
 
 app.post(
 	"/api/notes",
-	( request, response ) => {
+	( request, response, next ) => {
 		const body = request.body
 	
-		if( !body.content ) {
-			return response.status( 400 ).json(
-				{ error: "content missing" }
-			)
-		}
-		
 		const note = new Note( {
 			content: body.content,
 			important: body.important || false,
 		} )
 
-		note.save().then( savedNote => {
-			response.json( note )
-		} )
+		note
+			.save()
+			.then( savedNote => {
+				response.json( savedNote )
+			} )
+			.catch( error => next( error ) )
 	}
 )
 
