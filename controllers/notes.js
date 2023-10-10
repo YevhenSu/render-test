@@ -2,7 +2,7 @@ const notesRouter = require( 'express' ).Router()
 const Note = require( './models/note' )
 
 notesRouter.get(
-  '/api/notes/:id',
+  '/:id',
   ( request, response, next ) => {
     Note.findById( request.params.id )
       .then( note => {
@@ -17,7 +17,7 @@ notesRouter.get(
 )
 
 notesRouter.put(
-  '/api/notes/:id',
+  '/:id',
   ( request, response, next ) => {
     const { content, important } = request.body
 
@@ -36,7 +36,7 @@ notesRouter.put(
 )
 
 notesRouter.delete(
-  '/api/notes/:id',
+  '/:id',
   ( request, response, next ) => {
     Note.findByIdAndRemove( request.params.id )
       .then( result => {
@@ -47,7 +47,7 @@ notesRouter.delete(
 )
 
 notesRouter.post(
-  '/api/notes',
+  '/',
   ( request, response, next ) => {
     const body = request.body
 
@@ -65,7 +65,7 @@ notesRouter.post(
   }
 )
 
-notesRouter.get( '/api/notes', ( request, response ) => {
+notesRouter.get( '/', ( request, response ) => {
   Note.find({}).then( notes => {
     response.json( notes )
   } )
