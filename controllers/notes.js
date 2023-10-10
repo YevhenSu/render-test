@@ -39,7 +39,7 @@ notesRouter.delete(
   '/:id',
   ( request, response, next ) => {
     Note.findByIdAndRemove( request.params.id )
-      .then( result => {
+      .then( () => {
         response.status( 204 ).end()
       } )
       .catch( error => next( error ) )
