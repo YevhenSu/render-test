@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "build:ui": "rm -rf dist && cd ../../part2/part2-notes-frontend/ && npm run build && cp -r dist/ ../../part3/render-test/",
     "deploy:full": "npm run build:ui && git add -A && git commit -m uibuild && git push",
-		"lint": "eslint ."
+    "lint": "eslint ."
   },
   "author": "",
   "license": "MIT",
@@ -22,6 +22,10 @@
   "devDependencies": {
     "eslint": "^8.51.0",
     "eslint-plugin-react": "^7.33.2",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
