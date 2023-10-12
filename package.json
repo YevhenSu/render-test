@@ -27,7 +27,7 @@
   },
   "jest": {
     "testEnvironment": "node",
-		"transformIgnorePatterns": [
+    "transformIgnorePatterns": [
       "/node_modules/"
     ]
   }
