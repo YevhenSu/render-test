@@ -11,6 +11,18 @@ test( 'notes are returned as json', async () => {
     .expect( 'Content-Type', /application\/json/ )
 } )
 
+test('there are two notes', async () => {
+  const response = await api.get('/api/notes')
+
+  expect(response.body).toHaveLength(2)
+})
+
+test('the first note is about HTML', async () => {
+  const response = await api.get('/api/notes')
+
+  expect(response.body[0].content).toBe('HTML is Easy')
+})
+
 afterAll( async () => {
   await mongoose.connection.close()
 } )
