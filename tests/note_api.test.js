@@ -17,10 +17,10 @@ const initialNotes = [
 
 beforeEach( async () => {
   await Note.deleteMany( {} )
-	let noteObject = new Note( initialNotes[ 0 ] )
-	await noteObject.save()
-	noteObject = new Note( initialNotes[ 1 ] )
-	await noteObject.save()
+  let noteObject = new Note( initialNotes[ 0 ] )
+  await noteObject.save()
+  noteObject = new Note( initialNotes[ 1 ] )
+  await noteObject.save()
 } )
 
 test( 'notes are returned as json', async () => {
