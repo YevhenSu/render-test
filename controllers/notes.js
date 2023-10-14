@@ -67,10 +67,9 @@ notesRouter.post(
 
 notesRouter.get(
   '/',
-  ( request, response ) => {
-    Note.find({}).then( notes => {
-      response.json( notes )
-    } )
+  async ( request, response ) => {
+    const notes = await Note.find({})
+    response.json( notes )
   } )
 
 module.exports = notesRouter
