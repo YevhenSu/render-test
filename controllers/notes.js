@@ -34,7 +34,7 @@ notesRouter.post(
       important: body.important || false,
     } )
 
-    const savedNode = await note.save()
+    const savedNote = await note.save()
     response.status( 201 ).json( savedNote )
   }
 )
