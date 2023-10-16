@@ -27,7 +27,7 @@ notesRouter.get(
 
 notesRouter.post(
   '/',
-  async ( request, response, next ) => {
+  async ( request, response ) => {
     const body = request.body
 
     const note = new Note( {
@@ -35,12 +35,8 @@ notesRouter.post(
       important: body.important || false,
     } )
 
-    try {
-      const savedNote = await note.save()
-      response.status( 201 ).json( savedNote )
-    } catch( exception ) {
-      next( exception )
-    }
+    const savedNote = await note.save()
+    response.status( 201 ).json( savedNote )
   }
 )
 
