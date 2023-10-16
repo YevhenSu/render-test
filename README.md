@@ -6,8 +6,8 @@ https://render-test-nj0v.onrender.com
 https://render-test-nj0v.onrender.com/api/notes
 
 ### to delete note with id
-#### curl -X "DELETE" https://render-test-nj0v.onrender.com/api/notes/id
+#### curl -X "DELETE" 'https://render-test-nj0v.onrender.com/api/notes/id'
 
 ### to change note with id
-#### curl -X "PUT" https://render-test-nj0v.onrender.com/api/notes/id -H 'Content-Type: application/json' -d '{"content": "<content to change>", "important": <true or false>}'
+#### curl -X "PUT" 'https://render-test-nj0v.onrender.com/api/notes/id' -H 'Content-Type: application/json' -d '{"content": "<content to change>", "important": <true or false>}'
 
