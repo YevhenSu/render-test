@@ -46,12 +46,13 @@ notesRouter.post(
 
 notesRouter.delete(
   '/:id',
-  ( request, response, next ) => {
-    Note.findByIdAndRemove( request.params.id )
-      .then( () => {
-        response.status( 204 ).end()
-      } )
-      .catch( error => next( error ) )
+  async ( request, response, next ) => {
+    try {
+      await Note.findByIdAndRemove( request.params.id )
+      response.status( 204 ).end()
+    } catch( exception ) {
+      next( exception )
+    }
   }
 )
 
